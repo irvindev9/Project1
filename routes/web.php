@@ -79,6 +79,14 @@ Route::get('/Administrador/Productos',function(){
     return view('PanelAdministrativo/PanelProductos');
 });
 
+//-------------- USER ----------------------
+
+Route::get('/Perfil/Mensajes',function(){
+    return view('/PanelUsuario/Mensajes');
+});
+
+//-------------------- BUSQUEDA -------------
+
 //Sistema de busqueda
 Route::get('/Busqueda/Articulo/{id}',function($Id){
     return view('Busqueda/Producto',['Id'=>$Id]);
