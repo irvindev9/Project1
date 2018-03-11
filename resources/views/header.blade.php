@@ -18,11 +18,18 @@
             <li class="nav-item">
                 <a class="nav-link  text-white" href="/">Inicio</a>
             </li>
-            @if(session()->has('name'))
+            @if(session()->has('name') && session()->get('tipoCuenta') == 'Cliente')
             <li class="nav-item">
-                <a class="nav-link  text-white" href="/Administrador">{{session()->get('name')}}<span class="badge badge-pill badge-light">2</span></a>
+                <a class="nav-link  text-white" href="/Profile">{{session()->get('name')}}<span class="badge badge-pill badge-light">2</span></a>
             </li>
             @endif
+
+            @if(session()->has('name') && session()->get('tipoCuenta') == 'Admin')
+            <li class="nav-item">
+                <a class="nav-link  text-white" href="/Profile">{{session()->get('name')}}<span class="badge badge-pill badge-light">2</span></a>
+            </li>
+            @endif
+            
             <li class="nav-item dropdown">
                 <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">

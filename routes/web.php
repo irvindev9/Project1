@@ -15,6 +15,17 @@ Route::get('/', function () {
     return view('Inicio/inicio');
 });
 
+//Redireccion de perfil Cliente/Administrador
+Route::get('/Profile',function(){
+    //Verifica el tipo de cuenta y lo redirige a la correcta
+    if(session()->get('tipoCuenta') == 'Cliente'){
+        return redirect('/Perfil');
+    }elseif(session()->get('tipoCuenta') == 'Admin'){
+        return redirect('/Administrador');
+    }
+    //Si no esta logeado lo redirige al inicio
+    return redirect('/');
+});
 //Panel de Administrador
 Route::get('/Administrador',function(){
     return view('PanelAdministrativo/Contenido');
@@ -81,6 +92,12 @@ Route::get('/Administrador/Productos',function(){
 
 //-------------- USER ----------------------
 
+//Panel usuario *Pendiente
+Route::get('/Perfil', function(){
+    return redirect('/Perfil/Mensajes');
+});
+
+//Panel usuario mensajes
 Route::get('/Perfil/Mensajes',function(){
     return view('/PanelUsuario/Mensajes');
 });
