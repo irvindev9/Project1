@@ -1,0 +1,11 @@
+<ul class="list-group">
+    <a href="/Administrador"><li class="list-group-item titulos active" style="text-decoration:none;text-align:center">Panel Administrativo</li></a>
+    <a href="/Administrador/Mensajes"><li style="text-decoration:none;color:black;" class="list-group-item"><img width="15" height="15" src="{{asset('iconset/svg/si-glyph-bubble-message-talk.svg')}}" alt="Mensajes">&nbsp;Mensajes</li></a>
+    <a href="/Administrador/Cotizaciones"><li style="text-decoration:none;color:black;" class="list-group-item"><img width="15" height="15" src="{{asset('iconset/svg/si-glyph-document-edit.svg')}}" alt="Cotizaciones">&nbsp;Cotizaciones</li></a>
+    <a href="/Administrador/Ventas"><li style="text-decoration:none;color:black;" class="list-group-item"><img width="15" height="15" src="{{asset('iconset/svg/si-glyph-money-coin.svg')}}" alt="Ventas">&nbsp;Ventas</li></a>
+    <a href="/Administrador/Usuarios"><li style="text-decoration:none;color:black;" class="list-group-item"><img width="15" height="15" src="{{asset('iconset/svg/si-glyph-person.svg')}}" alt="Usuarios">&nbsp;Usuarios</li></a>
+    <a href="/Administrador/Promociones"><li style="text-decoration:none;color:black;" class="list-group-item"><img width="15" height="15" src="{{asset('iconset/svg/si-glyph-calendar-3.svg')}}" alt="Programar Oferta">&nbsp;Programar oferta</li></a>
+    <a href="/Administrador/Email"><li style="text-decoration:none;color:black;" class="list-group-item"><img width="15" height="15" src="{{asset('iconset/svg/si-glyph-mail.svg')}}" alt="Enviar Correos">&nbsp;Envio de Correos</li></a>
+    <a href="/Administrador/Banners"><li style="text-decoration:none;color:black;" class="list-group-item"><img width="15" height="15" src="{{asset('iconset/svg/si-glyph-slide-show.svg')}}" alt="Slider">&nbsp;Banners de inicio</li></a>
+    <a href="/Administrador/Productos"><li style="text-decoration:none;color:black;" class="list-group-item"><img width="15" height="15" src="{{asset('iconset/svg/si-glyph-store.svg')}}" alt="Productos">&nbsp;Productos</li></a>
+</ul>
