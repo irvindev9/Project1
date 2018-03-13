@@ -37,9 +37,7 @@ Route::get('/Administrador/Mensajes',function(){
 });
 
 //Sistema de Mensajes > Especifico
-Route::get('/Administrador/Mensajes/{id}',function(){
-    return view('PanelAdministrativo/Mensajes');
-});
+Route::get('/Administrador/Mensajes/{id}','Administrador@VerMensaje');
 
 //Sistema de Cotizacion
 Route::get('/Administrador/Cotizaciones',function(){
@@ -102,6 +100,14 @@ Route::get('/Perfil/Mensajes',function(){
     return view('/PanelUsuario/Mensajes');
 });
 
+//Ver datos
+Route::get('/Perfil/MisDatos', function(){
+    return view('/PanelUsuario/DatosUsuario');
+});
+
+//Actualizar datos
+Route::post('Perfil/Update/go', 'Usuarios@UpdateProfile');
+
 //-------------------- BUSQUEDA -------------
 
 //Sistema de busqueda
@@ -152,3 +158,9 @@ Route::get('/Close/go','Login@CloseConnection');
 
 //Publicar productos
 Route::post('/Administrador/Save/Product/go','Administrador@UploadProduct');
+
+//Mandar nuevo mensaje (Administrador)
+Route::post('/Mensaje/Admin/{user}/go', 'Administrador@NewMessage');
+
+//Mandar nuevo mensaje (Clientes)
+Route::post('/Perfil/Mensaje/go', 'Usuarios@NewMessage');

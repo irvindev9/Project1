@@ -19,15 +19,25 @@
                 <a class="nav-link  text-white" href="/">Inicio</a>
             </li>
             @if(session()->has('name') && session()->get('tipoCuenta') == 'Cliente')
-            <li class="nav-item">
-                <a class="nav-link  text-white" href="/Profile">{{session()->get('name')}}<span class="badge badge-pill badge-light">2</span></a>
-            </li>
+                <?php
+                    $Mensajes = DB::table('messages')->where('id_admin','<>',null)->where('id_usuario',session()->get('id'))->count();
+
+                    $Notificacion = $Mensajes;
+                ?>
+                <li class="nav-item">
+                <a class="nav-link  text-white" href="/Profile">{{session()->get('name')}}<span class="badge badge-pill badge-light">{{$Notificacion}}</span></a>
+                </li>
             @endif
 
             @if(session()->has('name') && session()->get('tipoCuenta') == 'Admin')
-            <li class="nav-item">
-                <a class="nav-link  text-white" href="/Profile">{{session()->get('name')}}<span class="badge badge-pill badge-light">2</span></a>
-            </li>
+                <?php
+                    $Mensajes = DB::table('messages')->where('visto','No')->count();
+                    $Cotizacion = DB::table('quotations')->where('visto','No')->count();
+                    $Notificacion = $Mensajes + $Cotizacion;
+                ?>
+                <li class="nav-item">
+                <a class="nav-link  text-white" href="/Profile">{{session()->get('name')}}<span class="badge badge-pill badge-light">{{$Notificacion}}</span></a>
+                </li>
             @endif
             
             <li class="nav-item dropdown">

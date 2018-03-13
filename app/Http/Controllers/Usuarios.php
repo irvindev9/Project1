@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Quotation;
+use App\Mensaje;
 
 
 class Usuarios extends Controller
@@ -36,5 +37,32 @@ class Usuarios extends Controller
         $quotation->save();
 
         return redirect('/Cotizacion?Ok=success');
+    }
+
+    public function NewMessage(Request $request){
+        $Mensaje = new Mensaje();
+        $Mensaje->mensaje = $request->newMessage;
+        $Mensaje->visto = 'No';
+        $Mensaje->id_usuario = session()->get('id');
+        $Mensaje->save();
+
+        return redirect('/Perfil/Mensajes');
+    }
+
+    public function UpdateProfile(Request $request){
+        $Update = User::where('id',session()->get('id'))->first();
+        $Update->name = $request->name;
+        $Update->lastname = $request->lastname;
+
+        if(isset($request->pass)){
+            $Newpass = sha1('TeLoCompro'.$request->pass.'TeLoEnvio');
+            $Update->pass = $Newpass;
+        }
+        if(isset($request->tel)){
+            $Update->tel = $request->tel;
+        }
+        $Update->save();
+
+        return redirect('/Perfil');
     }
 }

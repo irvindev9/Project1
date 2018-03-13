@@ -1,7 +1,12 @@
 @extends('PanelUsuario/Usuario')
 
 @section('User')
-
+<?php
+  //Se recuperan los datos
+  $MensajesBox = DB::table('messages')->where('id_usuario',session()->get('id'))->get();
+  $Conteo = count($MensajesBox);
+  $contador = 0;
+?>
 <div class="row">
   <div class="col-12 titulos">
     <a href="/Perfil/Mensajes" style="style:none;color:black;">Mensajes</a>
@@ -11,39 +16,36 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-6 alert alert-info">
-        Hola
-      </div>
-      <div class="col-6 offset-6 alert alert-primary">
-        Hola Fernando en que te puedo ayudar?
-      </div>
-      <div class="col-6 alert alert-info">
-        Quiero pedir una cotizacion
-      </div>
-      <div class="col-6 offset-6 alert alert-primary">
-        Que deseas comprar?
-      </div>
-      <div class="col-6 alert alert-info">
-        Un iPhone
-      </div>
-      <div class="col-6 offset-6 alert alert-primary">
-        Puedes decirme las especificaciones?
-      </div>
-      <div class="col-6 alert alert-info">
-        Un iPhone X de 64 GBs
-      </div>
-      <div class="col-6 offset-6 alert alert-primary">
-        Te sale en 20 mil pesos
-      </div>
-      <div id="down" class="col-6 alert alert-info">
-        Ok lo quiero!
-      </div>
+      @foreach($MensajesBox as $Mensaje)
+        @if($Mensaje->id_admin == null)
+          @if($contador == $Conteo)
+            	<div class="col-7 alert alert-info">
+          @else
+            	<div class="col-7 alert alert-info" id="down">
+          @endif
+                {{$Mensaje->mensaje}}
+            	</div>
+
+        @else
+          @if($contador == $Conteo)
+            	<div class="col-7 offset-5 alert alert-primary">
+          @else
+            	<div class="col-7 offset-5 alert alert-primary" id="down">
+          @endif
+              	{{$Mensaje->mensaje}}
+            	</div>
+
+        @endif
+
+        <?php $contador++; ?>
+      @endforeach
     </div>
   </div>
 
 </div>
 <div class="bordesuperior container-fluid">
-  <form>
+  <form action="/Perfil/Mensaje/go" method="POST">
+    {{ csrf_field() }}
     <div class="row">
       <div class="col-9">
         <input type="text" name="newMessage" placeholder="Ingrese el mensaje" class="form-control ">

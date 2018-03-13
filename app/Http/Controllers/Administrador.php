@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Quotation;
 use App\Product;
+use App\Mensaje;
 
 class Administrador extends Controller
 {
@@ -14,6 +15,12 @@ class Administrador extends Controller
         $Cotizacion->visto = 'Si';
         $Cotizacion->save();
         return view('PanelAdministrativo/Cotizacion',['idCotizacion'=> $idCotizacion]);
+    }
+
+    public function VerMensaje($id_user){
+        $MensajeCliente = Mensaje::where('id_usuario',$id_user)->update(['visto' => 'Si']);
+
+        return view('PanelAdministrativo/Mensajes',['id_user' => $id_user]);
     }
 
     public function UploadProduct(Request $request){
@@ -49,5 +56,22 @@ class Administrador extends Controller
 
             
         }
+    }
+
+    public function NewMessage(Request $request, $user_id){
+        if(session()->get('tipoCuenta') != 'Admin'){
+            //Si no es administrador se redirige al inicio
+            return redirect('/');
+        }
+
+        $Mensaje = new Mensaje();
+        $Mensaje->mensaje = $request->newMessage;
+        $Mensaje->visto = 'Si';
+        $Mensaje->id_usuario = $user_id;
+        $Mensaje->id_admin = session()->get('id');
+        $Mensaje->save();
+
+        return redirect('/Administrador/Mensajes/'.$user_id);
+
     }
 }
