@@ -78,6 +78,12 @@
                     @include('/Carousels/BannerAuto')
                 @elseif($Articulo == 'Calzado')
                     @include('/Carousels/BannerCalzado')
+                @elseif($Articulo == 'Computadoras')
+                    @include('/Carousels/BannerCompu')
+                @elseif($Articulo == 'Deportes')
+                    @include('/Carousels/BannerSports')
+                @elseif($Articulo == 'Equipo Dj')
+                    @include('/Carousels/BannerDj')
                 @else
                     @include('/Carousels/BannerMini')
                 @endif
