@@ -70,16 +70,23 @@
 
         </div>
         <?php
-            $Productos = DB::table('products')->where('keywords','like','%'.$Articulo.'%')->get();
+            $Productos = DB::table('products')->where('keywords','like','%'.$Articulo.'%')->orwhere('keywords','like',$Articulo.'%')->orwhere('keywords','like',$Articulo.'%')->get();
         ?>
         <div class="col-12 col-md-7 offset-md-1 caja contenedor">
             <div class="container-fluid">
+                @if($Articulo == 'Autopartes')
+                    @include('/Carousels/BannerAuto')
+                @elseif($Articulo == 'Calzado')
+                    @include('/Carousels/BannerCalzado')
+                @else
+                    @include('/Carousels/BannerMini')
+                @endif
             @foreach($Productos as $Producto)
 
                 <div class="row articulocaja">
 
                     <div class="col-12 col-md-3">
-                        <center><a href="/Busqueda/Articulo/{{$Producto->id}}"><img class="fotos card-img-top img-fluid" src="{{asset('tienda_img/'.$Producto->imagen)}}" alt="Card image cap"></a></center>
+                        <center><a href="/Busqueda/Articulo/{{$Producto->id}}"><img class="fotos card-img-top img-fluid" src="{{asset('public/tienda_img/'.$Producto->imagen)}}" alt="Card image cap"></a></center>
                     </div>
                     <div class="col-12 col-md-9">
                         <a class="titulos" href="/Busqueda/Articulo/{{$Producto->id}}" style="text-decoration:none;color:black;">{{$Producto->articulo}}</a>

@@ -9,7 +9,7 @@
 <div class="card container" style="margin-top:25px;">
     <div class="row">
         <div class="card col-12 col-md-6">
-            <center><a href="#"><img class="fotosP card-img-top img-fluid" src="{{asset('tienda_img/'.$Producto->imagen)}}" alt="Card image cap"></a></center>
+            <center><a href="#"><img class="fotosP card-img-top img-fluid" src="{{asset('public/tienda_img/'.$Producto->imagen)}}" alt="Card image cap"></a></center>
         </div>
         <div class="col-6">
             <a class="titulos">{{$Producto->articulo}}</a>
@@ -24,7 +24,23 @@
             <img height="25" width="25"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHpSURBVEhL7ZVLSwJRFIDdR7+i+hvRA1fl6IiY/QqFCHLG9yPEfkLWIqFVgeQ4jljquta6DnpBkVq6yECne+RMzehojY9p4wcXZu65cz/u45wxzJBDMZwfH/WD9mYjFJMR8VUfQGoPXjV1FUvS/YsXUTexXHqQresj7pVKYq3NzPAt2is80D4haXJnjDi9OmrSUVuMq4rB8yfRlSh3bKF8g/bmbjY86SVUKaEYPjopsbLVRNdRpW3xZN8plltGnRI1udpW/tbMLP/pCBfrZMXtOF/tzsOc3oogN+0Ji6hT0iuHiTD0Z4w7uTkzm14hZ3xpDxea0dRzdy4nWbnVJ1zjsH7k8lHEciwe3g9yWHmcr4n2YL5hYjNrGO5Hko8rBsgWF+CcYdWuw3KHXOQkhtQB+STElJtbdUSKdRAHzh5Fkmr3GBoMycMAPo4MtZuaN7PZFohj3Cu5fJkPDE2X/xOPstWTgFSuonS5nKSa0R7hBEPTw8LyoS1ZOkEJHZpO4wBnuunm10kBKYH0u4AkoHQOLSA/5Q+7NPXBRdqOlOqu44qiZJItfhtYMgH4GAb3TqilT2qwveRch/8kJLRKevsgZeD2QpWykRIJv0Vy1gs4ZDDwsdSwS1Mf5KnVK9zB7YVUwtCMGXphMHwBwhCatq+mZF4AAAAASUVORK5CYII=">&nbsp;<a class="labelshipping">&nbsp;Garantia de 10 dias*</a>
             <br>
             <br>
-            <a class="btn btn-primary text-white">Comprar ahora</a>&nbsp;<a class="btn btn-light">Agregar al carrito</a>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="telocomproteloenviot@gmail.com">
+                <input type="hidden" name="lc" value="MX">
+                <input type="hidden" name="item_name" value="<?echo "Articulo ".$Producto->articulo." - ". $Id ?>">
+                <input type="hidden" name="item_number" value="">
+                <input type="hidden" name="amount" value="{{$Producto->precio}}">
+                <input type="hidden" name="currency_code" value="MXN">
+                <input type="hidden" name="button_subtype" value="services">
+                <input type="hidden" name="no_note" value="0">
+                <input type="hidden" name="tax_rate" value="0.000">
+                <input type="hidden" name="shipping" value="0.00">
+                <input type="hidden" name="return" value="http://telocomproteloenvio.com/index.php">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
+                <input type="image" src="https://www.paypalobjects.com/webstatic/es_MX/mktg/logos-buttons/redesign/btn_10.png" border="0" name="submit" alt="PayPal, la forma m�s segura y r�pida de pagar en l�nea.">
+                <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+            </form>&nbsp;<a class="btn btn-light">Agregar al carrito</a>
         </div>
     </div>
     <div class="row">

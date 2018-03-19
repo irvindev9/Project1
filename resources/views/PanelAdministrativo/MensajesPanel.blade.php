@@ -26,8 +26,11 @@
         @else
             <div class="row burbuja">
         @endif
+                <?php
+                    $Name = DB::table('users')->where('id',$Mensaje->id_usuario)->first();
+                ?>
                 <div class="col-12 col-md-2">
-                    <img width="15" height="15" src="{{asset('iconset/svg/si-glyph-head.svg')}}" alt="Persona Icon">&nbsp;&nbsp;Fernando
+                    <img width="15" height="15" src="{{asset('iconset/svg/si-glyph-head.svg')}}" alt="Persona Icon">&nbsp;&nbsp;{{$Name->name}}
                 </div>
                 <div class="col-12 col-md-8">
                     <img width="15" height="15" src="{{asset('iconset/svg/si-glyph-bubble-message-hi.svg')}}" alt="Mensaje Icon">&nbsp;&nbsp;{{$Mensaje->mensaje}}

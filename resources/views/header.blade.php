@@ -60,9 +60,6 @@
                     <a class="dropdown-item" href="/Busqueda/Otros">Otros</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link  text-white" href="/Cotizacion">Solicitar cotizacion</a>
-            </li>
             @if(!session()->has('id'))
             <li class="nav-item">
                 <a class="nav-link  text-white" href="/Registro">Registro</a>
@@ -74,13 +71,16 @@
             </li>
             @else
             <li class="nav-item">
+                <a class="nav-link  text-white" href="/Cotizacion">Solicitar cotizacion</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link text-white" href="/Close/go">
                 Cerrar Sesión
                 </a>
             </li>
             @endif
             <li class="nav-item d-block d-md-none">
-                <a class="nav-link  text-white" href="#">Carrito<span class="badge badge-pill badge-light">2</span></a>
+                <a class="nav-link  text-white" href="#">Carrito<span class="badge badge-pill badge-light">?</span></a>
             </li>
         </ul>
     </div>
@@ -89,14 +89,28 @@
     <div class="row">
         <div class="col-12 col-md-6 offset-md-3">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Buscar articulos" aria-label="Busqueda" aria-describedby="Articulos">
+                <input type="text" class="form-control" id="Busqueda" placeholder="Buscar articulos" aria-label="Busqueda" aria-describedby="Articulos">
                 <div class="input-group-append">
-                    <button class="btn btn-dark" type="button">Buscar</button>
+                    <button id="Buscar" onclick="goToURL(); return false;" class="btn btn-dark" type="button">Buscar</button>
+                    <script>
+                        var input = document.getElementById("Busqueda");
+                        input.addEventListener("keyup", function(event) {
+                            event.preventDefault();
+                            if (event.keyCode === 13) {
+                                document.getElementById("Buscar").click();
+                            }
+                        });
+
+                        function goToURL() {
+                            var url = "/Busqueda/" + $("#Busqueda").val();
+                            location.href = url;
+                        }
+                    </script>
                 </div>
             </div>
         </div>
         <div class="col-md-1 offset-md-2 d-none d-md-block">
-            <a href="#"><img width="30" height="30" src="{{asset('iconset/svg/si-glyph-trolley-2.svg')}}" alt="CarritoCompras"><span class="badge badge-pill badge-light">2</span></a>
+            <a href="#"><img width="30" height="30" src="{{asset('iconset/svg/si-glyph-trolley-2.svg')}}" alt="CarritoCompras"><span class="badge badge-pill badge-light">?</span></a>
         </div>
     </div>
 </div>
