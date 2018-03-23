@@ -62,7 +62,7 @@
             </form>
            <div class="container">
                <div class="row">
-                     <div class="col-12" style="text-align:right;"><a href="#">Inicio de sesion</a></div>
+                     <div class="col-12" style="text-align:right;"><a href="#" data-toggle="modal" data-target="#ModalSesion">Inicio de sesion</a></div>
                </div>
            </div>
         </div>

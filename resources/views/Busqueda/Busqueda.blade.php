@@ -22,11 +22,18 @@
 
             <div class="dropdown">
                 <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @if(isset($_GET['MenorPrimero']))
+                        MenorPrimero
+                    @elseif(isset($_GET['MayorPrimero']))
+                        MayorPrimero
+                    @else
                     Mas relevantes
+                    @endif
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Menor precio</a>
-                    <a class="dropdown-item" href="#">Mayor precio</a>
+                    <a class="dropdown-item" href="/Busqueda/{{$Articulo}}">Mas relevantes</a>
+                    <a class="dropdown-item" href="/Busqueda/{{$Articulo}}?MenorPrimero">Menor precio</a>
+                    <a class="dropdown-item" href="/Busqueda/{{$Articulo}}?MayorPrimero">Mayor precio</a>
                 </div>
             </div>
 
@@ -70,7 +77,15 @@
 
         </div>
         <?php
+            //Busqueda QUERY
             $Productos = DB::table('products')->where('keywords','like','%'.$Articulo.'%')->orwhere('keywords','like',$Articulo.'%')->orwhere('keywords','like',$Articulo.'%')->get();
+            if(isset($_GET['MenorPrimero'])){
+                $Productos = DB::table('products')->where('keywords','like','%'.$Articulo.'%')->orwhere('keywords','like',$Articulo.'%')->orwhere('keywords','like',$Articulo.'%')->orderBy('precio', 'asc')->get();
+            }
+            if(isset($_GET['MenorPrimero'])){
+                $Productos = DB::table('products')->where('keywords','like','%'.$Articulo.'%')->orwhere('keywords','like',$Articulo.'%')->orwhere('keywords','like',$Articulo.'%')->orderBy('precio', 'desc')->get();
+            }
+
         ?>
         <div class="col-12 col-md-7 offset-md-1 caja contenedor">
             <div class="container-fluid">
@@ -84,6 +99,16 @@
                     @include('/Carousels/BannerSports')
                 @elseif($Articulo == 'Equipo Dj')
                     @include('/Carousels/BannerDj')
+                @elseif($Articulo == 'Muebles')
+                    @include('/Carousels/BannerFurniture')
+                @elseif($Articulo == 'Medicamentos')
+                    @include('/Carousels/BannerFarma')
+                @elseif($Articulo == 'Videojuegos')
+                    @include('/Carousels/BannerVideojuegos')
+                @elseif($Articulo == 'Tiendas Departamentales')
+                    @include('/Carousels/BannerDepartamentos')
+                @elseif($Articulo == 'Ropa')
+                    @include('/Carousels/BannerRopa')
                 @else
                     @include('/Carousels/BannerMini')
                 @endif

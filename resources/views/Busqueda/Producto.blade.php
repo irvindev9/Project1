@@ -69,19 +69,19 @@
     </div>
     <div class="row">
         <div class="col-10 offset-1 alert alert-primary">
-            Fernando: Aun esta disponible? (01-01-2018)
+            Fernando: Aun esta disponible? (<?php echo date("m.d.y"); ?>)
         </div>
         <div class="col-9 offset-2 alert alert-info">
-            Te lo compro Te lo envio: Asi es amigo! (01-01-2018)
+            Te lo compro Te lo envio: Asi es amigo! (<?php echo date("m.d.y"); ?>)
         </div>
     </div>
-    <div class="row">
+    <!--div class="row">
         <div class="col-10 offset-1 alert alert-primary">
             Juan: Es usada? (02-01-2018)
         </div>
         <div class="col-9 offset-2 alert alert-info">
             Te lo compro Te lo envio: Seminueva, poco uso! (02-01-2018)
-        </div>
+        </div-->
     </div>
 </div>
 

@@ -15,7 +15,7 @@
 </div>
 
 <div class="container" style="margin-top:50px;">
-    @include('Inicio/MasComprado')
+    @include('Carousels/BannerDepartamentosMain')
 </div>
 
 <div class="continer-fluid card" style="margin-top:50px;">
