@@ -87,7 +87,7 @@
 
     @yield('contenido')
 
-    <footer>
+    <footer style="margin-top:200px;">
         @include('footer')
     </footer>
     <!-- Optional JavaScript -->

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use App\User;
 use App\Quotation;
 use App\Mensaje;
+use App\pay;
 
 
 class Usuarios extends Controller
@@ -64,5 +67,22 @@ class Usuarios extends Controller
         $Update->save();
 
         return redirect('/Perfil');
+    }
+
+    public function Pago($llave, $id){
+        $Check = DB::table('products')->where('id',$id)->where('llave',$llave)->first();
+
+        if(count($Check) == 1 && session()->has('id')){
+            $pago = new pay();
+            $pago->articulo = $Check->articulo;
+            $pago->id_usuario = session()->get('id');
+            $pago->id_articulo = $id;
+            $pago->estado = 'Procesando';
+            $pago->save();
+
+            return redirect('/Profile');
+        }
+
+        return redirect('/');
     }
 }

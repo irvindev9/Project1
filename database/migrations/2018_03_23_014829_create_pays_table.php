@@ -15,10 +15,10 @@ class CreatePaysTable extends Migration
     {
         Schema::create('pays', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Articulo');
+            $table->string('articulo');
             $table->unsignedInteger('id_usuario');
             $table->unsignedInteger('id_articulo');
-            $table->string('status');
+            $table->string('estado');
             $table->timestamps();
         });
     }

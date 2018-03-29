@@ -1,8 +1,18 @@
 <style>
     .foot{
-        background-color:#1976D2!important;
+        background-color:#FBC02D!important;
         text-align: center;
-        margin-top: 50px;
+        margin-top: 50px!important;
+        position: absolute;
+        bottom: 0;
+    }
+
+    body{
+        margin: 0;
+    }
+    html {
+        min-height: 100%;
+        position: relative;
     }
 </style>
 <footer>

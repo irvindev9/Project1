@@ -164,3 +164,6 @@ Route::post('/Mensaje/Admin/{user}/go', 'Administrador@NewMessage');
 
 //Mandar nuevo mensaje (Clientes)
 Route::post('/Perfil/Mensaje/go', 'Usuarios@NewMessage');
+
+//Pago
+Route::get('/Pay/User/Cart/{llave}/{id}/check','Usuarios@Pago');
