@@ -1,9 +1,12 @@
 @extends('PanelAdministrativo/Administrador')
 
 @section('Admin')
+<?php $Venta = DB::table('pays')->where('id',$idVenta)->first(); ?>
+<?php $NombreUsuario = DB::table('users')->where('id',$Venta->id_articulo)->first(); ?>
+
 <div class="row">
     <div class="col-12 titulos">
-        <a href="/Administrador/Ventas" style="style:none;color:black;">Ventas</a> / 1: Juan Perez
+        <a href="/Administrador/Ventas" style="style:none;color:black;">Ventas</a> / {{$idVenta}}: {{$NombreUsuario->name}}
     </div>
 </div>
 <div class="row">
@@ -11,40 +14,41 @@
         Nombre:
     </div>
     <div class="col-6 col-md-3 col-form-label" style="text-align:left;">
-        Pedro Perez
+        {{$NombreUsuario->name}}
     </div>
     <div class="col-6 col-md-3 col-form-label" style="text-align:right;">
         Producto:
     </div>
     <div class="col-6 col-md-3 col-form-label" style="text-align:left;">
-        Xbox One
+        {{$Venta->articulo}}
     </div>
+    <?php $InfoArticulo = DB::table('products')->where('id',$Venta->id_articulo)->first(); ?>
     <div class="col-6 col-md-3 col-form-label" style="text-align:right;">
         Descripcion:
     </div>
     <div class="col-6 col-md-3 col-form-label" style="text-align:left;">
-        250 GBs
+        {{$InfoArticulo->descripcionCorta}}
     </div>
     <div class="col-6 col-md-3 col-form-label" style="text-align:right;">
         Precio:
     </div>
     <div class="col-6 col-md-3 col-form-label" style="text-align:left;">
-        $ 3500
+        $ {{$InfoArticulo->precio}}
     </div>
     <div class="col-6 col-md-3 col-form-label" style="text-align:right;">
         Estatus:
     </div>
     <div class="col-6 col-md-3 col-form-label" style="text-align:left;">
-        Pendiente de pago
+        {{$Venta->estado}}
     </div>
     <div class="col-6 col-md-3 col-form-label" style="text-align:right;">
         Fecha:
     </div>
     <div class="col-6 col-md-3 col-form-label" style="text-align:left;">
-        07/Octubre/2017
+        {{$Venta->created_at}}
     </div>
     <div class="col-6 col-md-6" style="text-align:center;">
-        <a href="#" class="btn btn-primary">Mensaje</a>
+        <a href="/Administrador/Mensajes/{{$NombreUsuario->id}}#down" class="btn btn-primary">Mensaje</a>
     </div>
     <div class="col-6 col-md-6" style="text-align:center;">
         <a href="#" class="btn btn-primary">Correo</a>

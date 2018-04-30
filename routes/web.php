@@ -53,8 +53,8 @@ Route::get('/Administrador/Ventas',function(){
 });
 
 //Sistema de Ventas > Especifico
-Route::get('/Administrador/Ventas/{id}',function(){
-    return view('PanelAdministrativo/Venta');
+Route::get('/Administrador/Ventas/{id}',function($id){
+    return view('PanelAdministrativo/Venta',['idVenta' => $id]);
 });
 
 //Sistema de Usuarios
@@ -103,6 +103,10 @@ Route::get('/Perfil/Mensajes',function(){
 //Ver datos
 Route::get('/Perfil/MisDatos', function(){
     return view('/PanelUsuario/DatosUsuario');
+});
+
+Route::get('/Perfil/MisCompras', function(){
+    return view('PanelUsuario/ComprasUsuario');
 });
 
 //Actualizar datos
@@ -167,3 +171,6 @@ Route::post('/Perfil/Mensaje/go', 'Usuarios@NewMessage');
 
 //Pago
 Route::get('/Pay/User/Cart/{llave}/{id}/check','Usuarios@Pago');
+
+//Cambio de valores
+Route::post('/Administrador/EditUser/hash/fastlogin/go','Administrador@ChangeUser');

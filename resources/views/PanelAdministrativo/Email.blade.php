@@ -32,8 +32,20 @@
             <label for="AreaTexto">Mensaje:</label>
             <textarea class="form-control" id="TextArea" rows="5" name="Asunto"></textarea>
         </div>
-        <input type="submit" class="btn btn-primary" value="Enviar" style="margin-bottom:5px;">
+        <input type="submit" class="btn btn-primary" value="Temporalmente deshabilitado" style="margin-bottom:5px;" disabled>
     </form>
+    </div>
+</div>
+<div class="card container" style="margin:10px;">
+    <div class="row">
+        <div class="col-12 titulos">
+            <h6>Cuenta de correo</h6>
+        </div>
+        <div class="col-6">Usuario: contacto@telocomproteloenvio.com</div>
+        <div class="col-6">Contraseña: abc123</div>
+        <div class="col-12">
+            <a target="_blank" href="https://webmail.hostinger.mx"><h3>webmail.hostinger.mx</h3></a>
+        </div>
     </div>
 </div>
 

@@ -74,4 +74,28 @@ class Administrador extends Controller
         return redirect('/Administrador/Mensajes/'.$user_id);
 
     }
+
+    public function ChangeUser(Request $request){
+        if(session()->get('tipoCuenta') != 'Admin'){
+            return redirect('/');
+        }
+
+        $Cambio = User::where('id',$request->id)->first();
+
+        if(count($Cambio) == 1){
+            $Cambio->name = $request->name;
+            $Cambio->lastname = $request->lastname;
+            $Cambio->email = $request->email;
+            $Cambio->tel = $request->tel;
+
+            if($request->newpass != ''){
+                $Cambio->pass = sha1('TeLoCompro'.$request->newpass.'TeLoEnvio');
+            }
+
+            $Cambio->save();
+
+            return redirect('/Administrador/Usuario/'.$request->id);
+        }
+
+    }
 }

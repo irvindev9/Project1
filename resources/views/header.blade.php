@@ -4,10 +4,13 @@
     }
 </style>
 <nav class="navbar navbar-expand-lg search text-white">
-    <a class="navbar-brand titulo text-white" href="/">
+    <a class="navbar-brand" href="/">
+    <img src="{{asset('public/logo.PNG')}}" width="150" height="40" alt="">
+  </a>
+    <!--a class="navbar-brand titulo text-white" href="/">
         <img width="30" height="30" class="d-inline-block align-top" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACASURBVEhL7ZCxDYAwDAQzHzMAAzAEWYSGJcgC7AV6ZAmZmM4xFH/SNXGsi5JIOOvUHRFK7gaHx740leELHEYoOQ0G1ks9fI2CX4a33KsvsyzzYO5CzCVTg6G1BEseq9BT3LF2IeaSqcHQWvKQYQXDnjKsYNhThhWfhlsqGRJJSiei5icpFIRKmwAAAABJRU5ErkJggg==">
         Te lo compro Te lo envio
-    </a>
+    </a-->
     <button class="navbar-toggler navbar navbar-dark bg-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

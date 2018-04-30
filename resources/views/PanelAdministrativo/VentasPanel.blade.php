@@ -16,52 +16,48 @@
         Ventas
     </div>
     <div class="col-6 titulos">
-        Total: $10000
+        <?php 
+            $TotalVentas = 0;
+
+            $Ventas = DB::table('pays')->get();
+
+            foreach($Ventas as $venta){
+                $Pago = DB::table('products')->where('id',$venta->id_articulo)->first();
+
+                $TotalVentas = $TotalVentas + floatval($Pago->precio);
+            }
+        ?>
+        Total: ${{$TotalVentas}}
     </div>
 </div>
-@for($i = 0;$i<3;$i++)
-<div class="row burbuja alert alert-danger">
+<?php $Pagos = DB::table('pays')->orderBy('id','asc')->get(); $i = 0; ?>
+@foreach($Pagos as $Pago)
+    @if($Pago->estado == 'Procesando')
+        <div class="row burbuja alert alert-danger">
+    @else
+        <div class="row burbuja">
+    @endif
     <div class="col-2 col-md-1">
-        Id#&nbsp;&nbsp;{{$i}}
+        Id#&nbsp;&nbsp;{{$Pago->id}}
     </div>
     <div class="col-10 col-md-2">
-        <img width="15" height="15" src="{{asset('iconset/svg/si-glyph-head.svg')}}" alt="Persona Icon">&nbsp;&nbsp;Fernando
+        <?php $NombreUsuario = DB::table('users')->where('id',$Pago->id_usuario)->first(); ?>
+        <img width="15" height="15" src="{{asset('iconset/svg/si-glyph-head.svg')}}" alt="Persona Icon">&nbsp;&nbsp;{{$NombreUsuario->name}}
     </div>
     <div class="col-12 col-md-3">
-        <img width="15" height="15" src="{{asset('iconset/svg/si-glyph-bag.svg')}}" alt="Producto Icon">&nbsp;&nbsp;Celular SONY
+        <img width="15" height="15" src="{{asset('iconset/svg/si-glyph-bag.svg')}}" alt="Producto Icon">&nbsp;&nbsp;{{$Pago->articulo}}
     </div>
     <div class="col-12 col-md-2">
-        <img width="15" height="15" src="{{asset('iconset/svg/si-glyph-repeat.svg')}}" alt="Pagado Icon">&nbsp;&nbsp;Pendiente
+        <img width="15" height="15" src="{{asset('iconset/svg/si-glyph-repeat.svg')}}" alt="Pagado Icon">&nbsp;&nbsp;{{$Pago->estado}}
     </div>
     <div class="col-12 col-md-3">
-        <img width="15" height="15" src="{{asset('iconset/svg/si-glyph-money-bag.svg')}}" alt="Precio Icon">&nbsp;&nbsp;$ 2000
+        <?php $PrecioArticulo = DB::table('products')->where('id',$Pago->id_articulo)->first(); ?>
+        <img width="15" height="15" src="{{asset('iconset/svg/si-glyph-money-bag.svg')}}" alt="Precio Icon">&nbsp;&nbsp;$ {{$PrecioArticulo->precio}}
     </div>
     <div class="col-12 col-md-1">
-        <a href="/Administrador/Ventas/{{$i}}" class="btn btn-primary btn-sm btn-block">Ver</a>
+        <a href="/Administrador/Ventas/{{$Pago->id}}" class="btn btn-primary btn-sm btn-block">Ver</a>
     </div>
 </div>
-@endfor
-@for($i = 3;$i<9;$i++)
-<div class="row burbuja">
-    <div class="col-2 col-md-1">
-        Id#&nbsp;&nbsp;{{$i}}
-    </div>
-    <div class="col-10 col-md-2">
-        <img width="15" height="15" src="{{asset('iconset/svg/si-glyph-head.svg')}}" alt="Persona Icon">&nbsp;&nbsp;Jose
-    </div>
-    <div class="col-12 col-md-3">
-        <img width="15" height="15" src="{{asset('iconset/svg/si-glyph-bag.svg')}}" alt="Producto">&nbsp;&nbsp;Celular LG
-    </div> 
-    <div class="col-12 col-md-2">
-        <img width="15" height="15" src="{{asset('iconset/svg/si-glyph-repeat.svg')}}" alt="Mensaje Icon">&nbsp;&nbsp;Pagado
-    </div>
-    <div class="col-12 col-md-3">
-        <img width="15" height="15" src="{{asset('iconset/svg/si-glyph-money-bag.svg')}}" alt="Mensaje Icon">&nbsp;&nbsp;$ 1500
-    </div>
-    <div class="col-12 col-md-1">
-        <a href="/Administrador/Ventas/{{$i}}" class="btn btn-primary btn-sm btn-block">Ver</a>
-    </div>
-</div>
-@endfor
+@endforeach
 
 @stop
