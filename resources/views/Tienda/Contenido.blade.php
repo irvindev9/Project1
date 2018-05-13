@@ -11,7 +11,7 @@
                         <div class="card-body">
                         <h5 class="card-title">{{$Tienda->banner}}</h5>
                         <p class="card-text">{{$Tienda->subtitulo}}</p>
-                            <a target="_blank" href="{{$Tienda->link}}" class="btn btn-primary">Ir al sitio</a>
+                            <a target="_blank" href="{{$Tienda->link}}" class="btn btn-primary btn-block">Ir al sitio</a>
                         </div>
                     </div>
                 </div>
