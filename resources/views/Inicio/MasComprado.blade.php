@@ -1,20 +1,23 @@
 <div class="row">
     <div class="titulos col-12">
-        Lo mas comprado
+        Ultimas tiendas agregadas
     </div>
 </div>
-<div class="row">
-    <div class="col-12 col-md-4 col-lg-3">
-        <div class="card">
-            <img class="card-img-top" src="{{asset('img/banners/MujerCompras.jpg')}}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Playera Real Madrid</h5>
-                <p class="card-text">Playera oficial del equipo, numero 10</p>
-                <a href="#" class="btn btn-primary">$ 1500</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-md-4 col-lg-3">
+<?php $UltimoAgregado = DB::table('shops')->latest()->limit(4)->get(); ?>
+        <div class="row">
+            @foreach($UltimoAgregado as $Item)
+                    <div class="col-12 col-md-4 col-lg-3">
+                        <div class="card">
+                            <img class="card-img-top" src="{{asset('public/tiendas/'.$Item->imagen)}}" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{$Item->banner}}</h5>
+                                <p class="card-text">{{$Item->subtitulo}}</p>
+                                <a target="_blank" href="{{$Item->link}}" class="btn btn-primary btn-block">Visitar Sitio</a>
+                            </div>
+                        </div>
+                    </div>
+            @endforeach
+    <!--div class="col-12 col-md-4 col-lg-3">
         <div class="card">
             <img class="card-img-top" src="{{asset('img/banners/MujerCompras.jpg')}}" alt="Card image cap">
             <div class="card-body">
@@ -43,5 +46,5 @@
                 <a href="#" class="btn btn-primary">$ 2000</a>
             </div>
         </div>
-    </div>
+    </div-->
 </div>

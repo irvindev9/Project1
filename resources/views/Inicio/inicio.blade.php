@@ -6,17 +6,17 @@
     @include('Inicio/CategoriasPopulares')
 </div>
 
-<div class="continer-fluid carruselimgCont" style="margin-top:50px; width:100%;padding:2%;">
+<!--div class="continer-fluid carruselimgCont" style="margin-top:50px; width:100%;padding:2%;">
     @include('Carousels/BannerMain')
-</div>
+</div-->
 
 <div class="container" style="margin-top:50px;">
-    @include('Inicio/UltimasOfertas')
+    @include('Inicio/MasComprado')
 </div>
 
-<div class="container" style="margin-top:50px;">
+<!--div class="container" style="margin-top:50px;">
     @include('Carousels/BannerDepartamentosMain')
-</div>
+</div-->
 
 <div class="continer-fluid card" style="margin-top:50px;">
     @include('Inicio/DatosVenta')
