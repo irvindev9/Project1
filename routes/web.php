@@ -28,11 +28,21 @@ Route::get('/Profile',function(){
 });
 //Panel de Administrador
 Route::get('/Administrador',function(){
+    if(session()->get('tipoCuenta') != 'Admin'){
+        //Si no es administrador se redirige al inicio
+        return redirect('/');
+    }
+
     return view('PanelAdministrativo/Contenido');
 });
 
 //Sistema de Mensajes
 Route::get('/Administrador/Mensajes',function(){
+    if(session()->get('tipoCuenta') != 'Admin'){
+        //Si no es administrador se redirige al inicio
+        return redirect('/');
+    }
+    
     return view('PanelAdministrativo/MensajesPanel');
 });
 
@@ -41,6 +51,11 @@ Route::get('/Administrador/Mensajes/{id}','Administrador@VerMensaje');
 
 //Sistema de Cotizacion
 Route::get('/Administrador/Cotizaciones',function(){
+    if(session()->get('tipoCuenta') != 'Admin'){
+        //Si no es administrador se redirige al inicio
+        return redirect('/');
+    }
+    
     return view('PanelAdministrativo/CotizacionesPanel');
 });
 
@@ -49,42 +64,82 @@ Route::get('/Administrador/Cotizacion/{id}','Administrador@VerCotizacion');
 
 //Sistema de Ventas
 Route::get('/Administrador/Ventas',function(){
+    if(session()->get('tipoCuenta') != 'Admin'){
+        //Si no es administrador se redirige al inicio
+        return redirect('/');
+    }
+    
     return view('PanelAdministrativo/VentasPanel');
 });
 
 //Sistema de Ventas > Especifico
 Route::get('/Administrador/Ventas/{id}',function($id){
+    if(session()->get('tipoCuenta') != 'Admin'){
+        //Si no es administrador se redirige al inicio
+        return redirect('/');
+    }
+    
     return view('PanelAdministrativo/Venta',['idVenta' => $id]);
 });
 
 //Sistema de Usuarios
 Route::get('/Administrador/Usuarios',function(){
+    if(session()->get('tipoCuenta') != 'Admin'){
+        //Si no es administrador se redirige al inicio
+        return redirect('/');
+    }
+    
     return view('PanelAdministrativo/UsuariosPanel');
 });
 
 //Sistema de Usuarios > Especifico
 Route::get('/Administrador/Usuario/{id}',function($id){
+    if(session()->get('tipoCuenta') != 'Admin'){
+        //Si no es administrador se redirige al inicio
+        return redirect('/');
+    }
+    
     $Usuario = DB::table('users')->where('id',$id)->first();
     return view('PanelAdministrativo/Usuario',['Usuario'=>$Usuario]);
 });
 
 //Sistema de correos
 Route::get('/Administrador/Email',function(){
+    if(session()->get('tipoCuenta') != 'Admin'){
+        //Si no es administrador se redirige al inicio
+        return redirect('/');
+    }
+    
     return view('PanelAdministrativo/Email');
 });
 
 //Sistema de banners
 Route::get('/Administrador/Banners',function(){
+    if(session()->get('tipoCuenta') != 'Admin'){
+        //Si no es administrador se redirige al inicio
+        return redirect('/');
+    }
+    
     return view('PanelAdministrativo/Banners');
 });
 
 //Sistema de promociones
 Route::get('/Administrador/Promociones',function(){
+    if(session()->get('tipoCuenta') != 'Admin'){
+        //Si no es administrador se redirige al inicio
+        return redirect('/');
+    }
+    
     return view('PanelAdministrativo/Promociones');
 });
 
 //Panel de articulos
 Route::get('/Administrador/Productos',function(){
+    if(session()->get('tipoCuenta') != 'Admin'){
+        //Si no es administrador se redirige al inicio
+        return redirect('/');
+    }
+    
     return view('PanelAdministrativo/PanelProductos');
 });
 
@@ -174,3 +229,47 @@ Route::get('/Pay/User/Cart/{llave}/{id}/check','Usuarios@Pago');
 
 //Cambio de valores
 Route::post('/Administrador/EditUser/hash/fastlogin/go','Administrador@ChangeUser');
+
+//Drop Producto
+Route::get('/Administrador/Productos/drop/{id}','Administrador@DropProduct');
+
+//Up banner
+Route::post('/Administrador/Banner/up/go','Administrador@UpBanner');
+
+//Up banner
+Route::get('/Administrador/Banner/drop/{id}',function($id){
+    if(session()->get('tipoCuenta') != 'Admin'){
+        //Si no es administrador se redirige al inicio
+        return redirect('/');
+    }
+
+    DB::table('shops')->where('id',$id)->delete();
+
+    return redirect('/Administrador/Banners?Delete');
+});
+
+//Vista de las tiendas
+Route::get('/Tiendas/{categoria}',function($categoria){
+    return view('Tienda/Contenido',['categoria' => $categoria]);
+});
+
+//Vista de Carrito -> Se envia el objeto 
+Route::get('/Carrito',function(){
+    if(session()->has('id')){
+        $Carrito = DB::table('cars')->where('id_user',session()->get('id'))->get();
+        return view('CarroCompras/CarroCompras',['Carrito' => $Carrito]);
+    }
+    return redirect('/');
+});
+
+Route::get('/Carrito/Add/Item/{id}','Administrador@AddItem');
+
+Route::get('/Delete/Item/Car/{id}',function($idItem){
+    if(session()->has('id')){
+        DB::table('cars')->where('id',$idItem)->delete();
+
+        return redirect('/Carrito');
+    }
+
+    return redirect('/');
+});

@@ -22,8 +22,8 @@
                 <ul style="text-align:center;list-style:none;color:white;">
                     <li class="titulos">Te lo compro Te lo envio</li>
                     <li><a href="/Profile" class="text-white">Mi cuenta</a></li>
-                    <li>Categorias</li>
                     <li><a href="/Cotizacion" class="text-white">Cotizacion</a></li>
+                    <li><a>Contacto</a></li>
                 </ul>
             </div>
         </div>

@@ -19,7 +19,7 @@
         </div>
         <div class="col-12 col-md-6">
             <label for="Titulo">Apellidos:</label>
-            <input name="lastname" type="text" class="form-control" id="tituloAp" aria-describedby="Apellidos" placeholder="Apellidos" value="Lopez Contreras">
+            <input name="lastname" type="text" class="form-control" id="tituloAp" aria-describedby="Apellidos" placeholder="Apellidos" value="{{$Datos->lastname}}">
         </div>
     </div>
     <div class="form-group form-row">

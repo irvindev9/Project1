@@ -44,7 +44,7 @@
                 <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
                 <input type="image" src="https://www.paypalobjects.com/webstatic/es_MX/mktg/logos-buttons/redesign/btn_10.png" border="0" name="submit" alt="PayPal, la forma m�s segura y r�pida de pagar en l�nea.">
                 <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
-            </form>&nbsp;<a class="btn btn-light">Agregar al carrito</a>
+            </form>&nbsp;<a href="/Carrito/Add/Item/{{$Id}}" class="btn btn-light">Agregar al carrito</a>
         </div>
     </div>
     <div class="row">

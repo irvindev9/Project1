@@ -46,14 +46,14 @@
             <li class="nav-item dropdown">
                 <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
-                    Categorias
+                    Productos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/Busqueda/Autopartes">Autopartes</a>
                     <a class="dropdown-item" href="/Busqueda/Calzado">Calzado</a>
                     <a class="dropdown-item" href="/Busqueda/Computadoras">Computadoras</a>
                     <a class="dropdown-item" href="/Busqueda/Deportes">Deportes</a>
-                    <a class="dropdown-item" href="/Busqueda/Equipo Dj">Equipo Dj's</a>
+                    <a class="dropdown-item" href="/Busqueda/Equipo Dj's">Equipo Dj's</a>
                     <a class="dropdown-item" href="/Busqueda/Libros">Libros</a>
                     <a class="dropdown-item" href="/Busqueda/Muebles">Muebles</a>
                     <a class="dropdown-item" href="/Busqueda/Medicamentos">Medicamentos</a>
@@ -61,6 +61,26 @@
                     <a class="dropdown-item" href="/Busqueda/Tiendas Departamentales">Tiendas departamentales</a>
                     <a class="dropdown-item" href="/Busqueda/Videojuegos">Videojuegos</a>
                     <a class="dropdown-item" href="/Busqueda/Otros">Otros</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Tiendas
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/Tiendas/Autopartes">Autopartes</a>
+                    <a class="dropdown-item" href="/Tiendas/Calzado">Calzado</a>
+                    <a class="dropdown-item" href="/Tiendas/Computadoras">Computadoras</a>
+                    <a class="dropdown-item" href="/Tiendas/Deportes">Deportes</a>
+                    <a class="dropdown-item" href="/Tiendas/Equipo Dj's">Equipo Dj's</a>
+                    <a class="dropdown-item" href="/Tiendas/Libros">Libros</a>
+                    <a class="dropdown-item" href="/Tiendas/Muebles">Muebles</a>
+                    <a class="dropdown-item" href="/Tiendas/Medicamentos">Medicamentos</a>
+                    <a class="dropdown-item" href="/Tiendas/Ropa">Ropa</a>
+                    <a class="dropdown-item" href="/Tiendas/Tiendas Departamentales">Tiendas departamentales</a>
+                    <a class="dropdown-item" href="/Tiendas/Videojuegos">Videojuegos</a>
+                    <a class="dropdown-item" href="/Tiendas/Otros">Otros</a>
                 </div>
             </li>
             @if(!session()->has('id'))
@@ -83,7 +103,8 @@
             </li>
             @endif
             <li class="nav-item d-block d-md-none">
-                <a class="nav-link  text-white" href="#">Carrito<span class="badge badge-pill badge-light">?</span></a>
+                <?php $Items = DB::table('cars')->where('id_user',session()->get('id'))->count(); ?>
+                <a class="nav-link  text-white" href="/Carrito">Carrito<span class="badge badge-pill badge-light">{{$Items}}</span></a>
             </li>
         </ul>
     </div>
@@ -113,7 +134,7 @@
             </div>
         </div>
         <div class="col-md-1 offset-md-2 d-none d-md-block">
-            <a href="#"><img width="30" height="30" src="{{asset('iconset/svg/si-glyph-trolley-2.svg')}}" alt="CarritoCompras"><span class="badge badge-pill badge-light">?</span></a>
+            <a href="/Carrito"><img width="30" height="30" src="{{asset('iconset/svg/si-glyph-trolley-2.svg')}}" alt="CarritoCompras"><span class="badge badge-pill badge-light">{{$Items}}</span></a>
         </div>
     </div>
 </div>
