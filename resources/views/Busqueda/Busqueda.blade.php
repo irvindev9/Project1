@@ -39,40 +39,17 @@
 
             <br>
 
-            <a class="subtitulo">Condicion</a>
+            <a class="subtitulo">Mi cuenta</a>
             <br>
-            <a href="#" class="btn btn-light">Nuevo</a>
+            <a href="/Perfil/MisCompras" class="btn btn-light">Mis compras</a>
             <br>
-            <a href="#" class="btn btn-light" style="margin-bottom:5px;">Usado</a>
+            <a href="/Perfil" class="btn btn-light" style="margin-bottom:5px;">Perfil</a>
 
             <br>
 
-            <a class="subtitulo">Categoria</a>
+            <a class="subtitulo">Carrito</a>
             <br>
-            <div class="dropdown">
-                <button style="margin-bottom: 5px;" class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Seleccionar
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Autopartes</a>
-                    <a class="dropdown-item" href="#">Calzado</a>
-                    <a class="dropdown-item" href="#">Computadoras</a>
-                    <a class="dropdown-item" href="#">Deportes</a>
-                    <a class="dropdown-item" href="#">Equipo Djs</a>
-                    <a class="dropdown-item" href="#">Libros</a>
-                    <a class="dropdown-item" href="#">Muebles</a>
-                    <a class="dropdown-item" href="#">Medicamentos</a>
-                    <a class="dropdown-item" href="#">Ropa</a>
-                    <a class="dropdown-item" href="#">Tiendas departamentales</a>
-                    <a class="dropdown-item" href="#">Videojuegos</a>
-                </div>
-            </div>
-            
-            <br>
-
-            <a class="subtitulo">Envio</a>
-            <br>
-            <a href="#" class="btn btn-light">Envio Gratuito</a>
+            <a href="/Carrito" class="btn btn-light">Ver</a>
             <br>
 
         </div>
@@ -135,7 +112,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-7 offset-md-4" style="margin-top:10px;">
+    <!--div class="col-md-7 offset-md-4" style="margin-top:10px;">
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-end">
                 <li class="page-item disabled">
@@ -150,7 +127,7 @@
                 </li>
             </ul>
         </nav>
-    </div>
+    </div-->
 </div>
 
 @stop

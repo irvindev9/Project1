@@ -179,6 +179,12 @@ Route::get('/Busqueda/{Articulo}',function($Articulo){
     return view('Busqueda/Busqueda',['Articulo'=>$Articulo]);
 });
 
+//Sistema de busqueda / Producto
+Route::get('/Busqueda',function(){
+    $Articulo = ' ';
+    return view('Busqueda/Busqueda',['Articulo'=>$Articulo]);
+});
+
 //Formulario de Registro
 Route::get('/Registro',function(){
     return view('/Registro/Registro');
