@@ -9,6 +9,7 @@ use App\User;
 use App\Quotation;
 use App\Mensaje;
 use App\pay;
+use App\comments;
 
 
 class Usuarios extends Controller
@@ -81,6 +82,20 @@ class Usuarios extends Controller
             $pago->save();
 
             return redirect('/Profile');
+        }
+
+        return redirect('/');
+    }
+
+    public function Comentario($Articulo, Request $request){
+        if(session()->has('id')){
+            $commit = new comments();
+            $commit->user_id = session()->get('id');
+            $commit->commit = $request->commit;
+            $commit->articulo = $Articulo;
+            $commit->save();
+
+            return redirect('/Busqueda/Articulo/'.$Articulo);
         }
 
         return redirect('/');

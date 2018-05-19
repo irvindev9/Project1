@@ -31,7 +31,7 @@
                 <input type="hidden" name="cmd" value="_xclick">
                 <input type="hidden" name="business" value="telocomproteloenviot@gmail.com">
                 <input type="hidden" name="lc" value="MX">
-                <input type="hidden" name="item_name" value="<?echo "Articulo ".$Producto->articulo." - ". $Id ?>">
+                <input type="hidden" name="item_name" value="<?php echo "Articulo ".$Producto->articulo." - ". $Id ?>">
                 <input type="hidden" name="item_number" value="">
                 <input type="hidden" name="amount" value="{{$Producto->precio}}">
                 <input type="hidden" name="currency_code" value="MXN">
@@ -54,38 +54,63 @@
         </div>
     </div>
     <div class="row" style="margin-top:15px;">
-        <div class="col-12">
-            <form>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-8 col-md-10">
-                            <label for="Coment">Comentario</label>
-                            <input type="text" class="form-control" id="Comentarioinput" placeholder="Ingresa un comentario">
-                        </div>
-                        <div class="col-4 col-md-2">
-                            <label for="Space">&nbsp;</label>
-                            <input type="submit" class="form-control btn btn-primary" value="Comentar">
+        @if(session()->has('id'))
+            <div class="col-12">
+                <form action="/Articulo/Comentario/go/{{$Id}}" method="POST">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-8 col-md-10">
+                                <label for="Coment">Comentario</label>
+                                <input name="commit" type="text" class="form-control" id="Comentarioinput" placeholder="Ingresa un comentario">
+                            </div>
+                            <div class="col-4 col-md-2">
+                                <label for="Space">&nbsp;</label>
+                                <input type="submit" class="form-control btn btn-primary" value="Comentar">
+                            </div>
                         </div>
                     </div>
+                </form>
+            </div>
+        @endif
+    </div>
+    <?php $Comentarios = DB::table('comments')->where('articulo',$Id)->get(); ?>
+    @foreach($Comentarios as $comentario)
+        <?php $NombreCliente = DB::table('users')->where('id',$comentario->user_id)->first(); ?>
+        <div class="row">
+            <div class="col-10 offset-1 alert alert-primary">
+                {{$NombreCliente->name}}: {{$comentario->commit}} ({{$comentario->updated_at}}) <br>
+                @if(session()->get('tipoCuenta') == 'Admin')
+                    <small><a href="/Delete/Commit/{{$comentario->id}}">(Eliminar)</a></small>
+                @endif
+            </div>
+            @if(session()->get('tipoCuenta') == 'Admin')
+                <div class="col-10 offset-1">
+                    <form action="/Articulo/Respuesta/go/{{$comentario->id}}" method="POST">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-8 col-md-10">
+                                    <label for="Coment">Respuesta</label>
+                                    <input name="answer" type="text" class="form-control" id="Comentarioinput" placeholder="Responder comentario">
+                                </div>
+                                <div class="col-4 col-md-2">
+                                    <label for="Space">&nbsp;</label>
+                                    <input type="submit" class="form-control btn btn-primary" value="Responder">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            @endif
+            <?php $Respuestas = DB::table('answers')->where('commit_id',$comentario->id)->get(); ?>
+            @foreach($Respuestas as $respuesta)
+                <div class="col-9 offset-2 alert alert-info">
+                    Te lo compro Te lo envio: {{$respuesta->answer}} ({{$respuesta->updated_at}})
+                </div>
+            @endforeach
         </div>
-    </div>
-    <div class="row">
-        <div class="col-10 offset-1 alert alert-primary">
-            Fernando: Aun esta disponible? (<?php echo date("m.d.y"); ?>)
-        </div>
-        <div class="col-9 offset-2 alert alert-info">
-            Te lo compro Te lo envio: Asi es amigo! (<?php echo date("m.d.y"); ?>)
-        </div>
-    </div>
-    <!--div class="row">
-        <div class="col-10 offset-1 alert alert-primary">
-            Juan: Es usada? (02-01-2018)
-        </div>
-        <div class="col-9 offset-2 alert alert-info">
-            Te lo compro Te lo envio: Seminueva, poco uso! (02-01-2018)
-        </div-->
+    @endforeach
     </div>
 </div>
 

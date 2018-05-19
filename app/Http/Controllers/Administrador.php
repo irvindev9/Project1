@@ -9,6 +9,7 @@ use App\Product;
 use App\Mensaje;
 use App\shops;
 use App\Car;
+use App\answers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -177,5 +178,34 @@ class Administrador extends Controller
         }
 
         return redirect('/');
+    }
+
+    public function Respuesta($id_commit,Request $request){
+        if(session()->get('tipoCuenta') != 'Admin'){
+            return redirect('/');
+        }
+
+        $answer = new answers();
+        $answer->commit_id = $id_commit;
+        $answer->answer = $request->answer;
+        $answer->id_admin = session()->get('id');
+        $answer->save();
+
+        $Articulo = DB::table('comments')->where('id',$id_commit)->first();
+
+        return redirect('/Busqueda/Articulo/'.$Articulo->articulo);
+    }
+
+    public function DeleteCommit($id_commit){
+        if(session()->get('tipoCuenta') != 'Admin'){
+            return redirect('/');
+        }
+
+        $GuardarArticulo = DB::table('comments')->where('id',$id_commit)->first();
+
+        DB::table('answers')->where('commit_id',$id_commit)->delete();
+        DB::table('comments')->where('id',$id_commit)->delete();
+
+        return redirect('/Busqueda/Articulo/'.$GuardarArticulo->articulo);
     }
 }

@@ -279,3 +279,12 @@ Route::get('/Delete/Item/Car/{id}',function($idItem){
 
     return redirect('/');
 });
+
+//Nuevo comentario
+Route::post('/Articulo/Comentario/go/{Articulo}','Usuarios@Comentario');
+
+//Nueva respuesta
+Route::post('/Articulo/Respuesta/go/{id_commit}','Administrador@Respuesta');
+
+//Eliminar Comentario
+Route::get('/Delete/Commit/{id_commit}','Administrador@DeleteCommit');
