@@ -6,9 +6,9 @@
     @include('Inicio/CategoriasPopulares')
 </div>
 
-<!--div class="continer-fluid carruselimgCont" style="margin-top:50px; width:100%;padding:2%;">
+<div class="continer-fluid carruselimgCont" style="margin-top:50px; width:100%;padding:2%;">
     @include('Carousels/BannerMain')
-</div-->
+</div>
 
 <div class="container" style="margin-top:50px;">
     @include('Inicio/MasComprado')
