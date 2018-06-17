@@ -40,6 +40,12 @@ class Usuarios extends Controller
         $quotation->visto = 'No';
         $quotation->save();
 
+        Mail::send('emails.cotizacion',$request->all(),function($msj) use ($request){
+            $msj->from('cotizaciones@telocomproteloenvio.com', 'Te lo compro Te lo envio');
+            $msj->subject('Nueva cotizacion');
+            $msj->to('rojagorra@gmail.com');
+        });
+
         return redirect('/Cotizacion?Ok=success');
     }
 
