@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <link width="16" height="16" rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACASURBVEhL7ZCxDYAwDAQzHzMAAzAEWYSGJcgC7AV6ZAmZmM4xFH/SNXGsi5JIOOvUHRFK7gaHx740leELHEYoOQ0G1ks9fI2CX4a33KsvsyzzYO5CzCVTg6G1BEseq9BT3LF2IeaSqcHQWvKQYQXDnjKsYNhThhWfhlsqGRJJSiei5icpFIRKmwAAAABJRU5ErkJggg=="/>
+    <link width="16" height="16" rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADYSURBVEhL3dQ/DgFBFIDxRaEWaqULiDNICKdxB7dAIm6glFBrtSo0VCqi8Od7CcnEvllvZCX4kl8zmXmzaxPR33R1DGQh7dwLDijhI43hXvaOKbw1oB0KsYC3LJbQDlq1kVgH2kGLGV4mH1g+tDYgyQVVmOpDG5JkCHM1aEN8jigjqDm0YZougipiB22YS558hDyC6kEGTJCRhTQr4IwTKrKQdjns8fxzWJhrYQttSJLvqYnNnfwB+rLui7XG47VXsuDJui/Wxy+Q15XDcqguC56s+362KLoBS+K+5Ix6uswAAAAASUVORK5CYII="/>
     <!-- Bootstrap CSS -->
     <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"-->
     
