@@ -106,4 +106,15 @@ class Usuarios extends Controller
 
         return redirect('/');
     }
+
+    public function EmailCheck(Request $request){
+
+        $ExisteCorreo = DB::table('users')->where('email',$request->correo)->count();
+
+        if($ExisteCorreo > 0){
+            return 'Ya existe: '.$request->correo;
+        }else{
+            return 'ok';
+        }
+    }
 }

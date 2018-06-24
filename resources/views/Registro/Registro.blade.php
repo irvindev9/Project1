@@ -58,7 +58,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Registrarte</button>
+                <input id="botonSubmit" type="submit" class="btn btn-primary" value="Registrarte">
             </form>
            <div class="container">
                <div class="row">
@@ -69,5 +69,44 @@
         
     </div>
 </div>
+<script>
+    
 
+    $('#Email1').on('keyup',function(){
+
+        var correo =  $('#Email1').val();
+
+        /*Funcion AJAX para validar que el correo ingresado no este repetido*/
+
+        var parametros = {
+            "correo" : correo
+        };
+
+        if(correo.match(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/)){
+            datos=$.ajax({
+            data:  parametros,
+            url:   '/registro/emailcheck',
+            type:  'GET',
+
+            success:  function (resultado) {
+                console.log(resultado);
+                if(resultado=="ok"){
+                    $('#botonSubmit').removeAttr('disabled');
+                    $('#botonSubmit').val('Registrarte');
+                }else{
+                    $('#botonSubmit').attr('disabled','disabled');
+                    $('#botonSubmit').val('Intenta con otro correo');
+                }
+            },
+            error :  function(resultado) {
+                console.log(resultado);
+            }
+            });
+        }else{
+            $('#botonSubmit').attr('disabled','disabled');
+        }
+
+        
+    });
+</script>
 @stop

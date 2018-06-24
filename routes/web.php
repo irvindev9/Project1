@@ -288,3 +288,5 @@ Route::post('/Articulo/Respuesta/go/{id_commit}','Administrador@Respuesta');
 
 //Eliminar Comentario
 Route::get('/Delete/Commit/{id_commit}','Administrador@DeleteCommit');
+
+Route::get('/registro/emailcheck', 'Usuarios@EmailCheck');
