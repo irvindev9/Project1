@@ -290,3 +290,9 @@ Route::post('/Articulo/Respuesta/go/{id_commit}','Administrador@Respuesta');
 Route::get('/Delete/Commit/{id_commit}','Administrador@DeleteCommit');
 
 Route::get('/registro/emailcheck', 'Usuarios@EmailCheck');
+
+Route::post('/procesar/pago/go','Administrador@Procesarpago');
+//Test pago
+Route::get('/pagos/{id}',function($id){
+    return view('Pagos/pago_general',['id' => $id]);
+});
